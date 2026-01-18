@@ -1,0 +1,48 @@
+{
+  "name": "midi-ascii-art",
+  "version": "1.0.0",
+  "description": "Generate beautiful ASCII art patterns in your terminal by playing MIDI keys",
+  "keywords": [
+    "midi",
+    "ascii",
+    "art",
+    "visualizer",
+    "terminal"
+  ],
+  "homepage": "https://github.com/electerious/midi-ascii-art",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/electerious/midi-ascii-art.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "bin": "./bin/index.js",
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "eslint": "eslint \"**/*.js\"",
+    "format": "npm run eslint -- --fix && npm run prettier -- --write",
+    "lint": "npm run eslint && npm run prettier -- --check",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.{js,json,mjs,css,md}\"",
+    "start": "./bin/index.js",
+    "test": "npm run lint"
+  },
+  "dependencies": {
+    "commander": "^14.0.2",
+    "easymidi": "^3.1.0"
+  },
+  "devDependencies": {
+    "@electerious/eslint-config": "^5.2.1",
+    "@electerious/prettier-config": "^4.0.0",
+    "eslint": "^9.39.2",
+    "prettier": "^3.8.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "authors": [
+    "Tobias Reich <tobias@electerious.com>"
+  ]
+}
