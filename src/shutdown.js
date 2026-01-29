@@ -1,5 +1,5 @@
 /**
- * Setup graceful shutdown handler
+ * Setup graceful shutdown handler.
  *
  * @param {*} device - MIDI device to close
  * @param {Function} [onShutdown] - Optional callback before shutdown

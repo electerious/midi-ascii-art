@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import { renderPattern } from './ascii.js'
 
 /**
- * Available color names that can be used
+ * Available color names that can be used.
  */
 const colorNames = [
   'black',
@@ -24,7 +24,7 @@ const colorNames = [
 ]
 
 /**
- * Get a random color from the available colors
+ * Get a random color from the available colors.
  *
  * @returns {string} Random color name
  */
@@ -33,7 +33,7 @@ export const getRandomColor = () => {
 }
 
 /**
- * Apply color to text
+ * Apply color to text.
  *
  * @param {string} text - Text to colorize
  * @param {string} color - Color name or 'random'
@@ -54,7 +54,7 @@ export const applyColor = (text, color) => {
 }
 
 /**
- * Render a pattern grid with color
+ * Render a pattern grid with color.
  *
  * @param {string[][]} grid - 2D array of characters
  * @param {string} color - Color name or 'random'

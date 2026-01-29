@@ -1,5 +1,5 @@
 /**
- * Seeded random number generator
+ * Seeded random number generator.
  *
  * @param {number} seed - Seed value
  * @returns {Function} Random number generator function
@@ -13,7 +13,7 @@ const createRandom = (seed) => {
 }
 
 /**
- * Generate a wave pattern
+ * Generate a wave pattern.
  *
  * @param {number} columns - Number of columns
  * @param {number} rows - Number of rows
@@ -50,7 +50,7 @@ export const generateWave = (columns, rows, salt = 0) => {
 }
 
 /**
- * Generate a diagonal lines pattern
+ * Generate a diagonal lines pattern.
  *
  * @param {number} columns - Number of columns
  * @param {number} rows - Number of rows
@@ -82,7 +82,7 @@ export const generateDiagonal = (columns, rows, salt = 0) => {
 }
 
 /**
- * Generate a circle/radial pattern
+ * Generate a circle/radial pattern.
  *
  * @param {number} columns - Number of columns
  * @param {number} rows - Number of rows
@@ -119,7 +119,7 @@ export const generateCircle = (columns, rows, salt = 0) => {
 }
 
 /**
- * Generate a grid pattern
+ * Generate a grid pattern.
  *
  * @param {number} columns - Number of columns
  * @param {number} rows - Number of rows
@@ -157,7 +157,7 @@ export const generateGrid = (columns, rows, salt = 0) => {
 }
 
 /**
- * Generate a random noise pattern
+ * Generate a random noise pattern.
  *
  * @param {number} columns - Number of columns
  * @param {number} rows - Number of rows
@@ -187,7 +187,7 @@ export const generateNoise = (columns, rows, salt = 0) => {
 }
 
 /**
- * Generate a chevron/zigzag pattern
+ * Generate a chevron/zigzag pattern.
  *
  * @param {number} columns - Number of columns
  * @param {number} rows - Number of rows
@@ -221,7 +221,7 @@ export const generateChevron = (columns, rows, salt = 0) => {
 }
 
 /**
- * Generate a spiral pattern
+ * Generate a spiral pattern.
  *
  * @param {number} columns - Number of columns
  * @param {number} rows - Number of rows

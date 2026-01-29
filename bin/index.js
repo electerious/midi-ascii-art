@@ -56,7 +56,7 @@ const patterns = [
 const noteSalts = new Map()
 
 /**
- * Get or create a salt for a MIDI note
+ * Get or create a salt for a MIDI note.
  *
  * @param {number} note - MIDI note number
  * @returns {number} Salt value for this note
@@ -71,7 +71,7 @@ const getSaltForNote = (note) => {
 }
 
 /**
- * Display ASCII art for a MIDI note
+ * Display ASCII art for a MIDI note.
  *
  * @param {number} note - MIDI note number
  * @param {number} velocity - Note velocity
