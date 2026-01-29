@@ -31,9 +31,10 @@ This is a real-time MIDI visualizer that generates ASCII art patterns in the ter
 
 Uses @electerious/eslint-config and @electerious/prettier-config for consistent code style.
 
+Update [README.md](../README.md) when functionality changes using the [Update Readme prompt](./prompts/Update%20Readme.prompt.md).
+Update [CHANGELOG.md](../CHANGELOG.md) for notable changes using Keep a [Changelog format](./prompts/Keep%20a%20Changelog.prompt.md).
+
 ## Key Dependencies
 
 - **easymidi** - Cross-platform MIDI I/O (wraps native bindings)
 - **commander** - CLI argument parsing for --columns and --rows options
-
-Note: Terminal dimensions default to `process.stdout.columns` and `process.stdout.rows - 2`
