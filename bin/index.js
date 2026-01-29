@@ -9,8 +9,9 @@ import {
   generateNoise,
   generateSpiral,
   generateWave,
-  renderPattern,
 } from '../src/ascii.js'
+import { renderPatternWithColor } from '../src/colors.js'
+import { hideCursor, showCursor } from '../src/cursor.js'
 import { connectToDevice, listDevices } from '../src/devices.js'
 import { setupShutdownHandler } from '../src/shutdown.js'
 
@@ -21,22 +22,22 @@ program
   .description('Generate ASCII art patterns when MIDI keys are pressed')
   .option('-c, --columns <number>', 'Number of columns', String(process.stdout.columns || 80))
   .option('-r, --rows <number>', 'Number of rows', String(process.stdout.rows - 2 || 20))
+  .option('--color <color>', 'Color for ASCII art (color name or "random")', 'white')
   .parse()
 
 const options = program.opts()
 
 const columns = Number.parseInt(options.columns, 10)
 const rows = Number.parseInt(options.rows, 10)
+const color = options.color
 
 if (Number.isNaN(columns) || columns <= 0) {
   console.error('❌ Invalid columns value')
-  // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1)
 }
 
 if (Number.isNaN(rows) || rows <= 0) {
   console.error('❌ Invalid rows value')
-  // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1)
 }
 
@@ -92,7 +93,7 @@ const displayAsciiForNote = (note, velocity) => {
 
   // Generate and render pattern
   const grid = pattern.generator(columns, rows, salt)
-  const output = renderPattern(grid)
+  const output = renderPatternWithColor(grid, color)
 
   process.stdout.write(output)
 }
@@ -126,7 +127,7 @@ try {
   })
 
   // Hide cursor
-  process.stdout.write('\u001B[?25l')
+  hideCursor()
 
   console.log('✅ Listening for MIDI notes...')
   console.log(`Pattern assignment: Each key assigned to one of ${patterns.length} patterns`)
@@ -136,11 +137,10 @@ try {
   // Handle graceful shutdown
   setupShutdownHandler(input, () => {
     // Show cursor again
-    process.stdout.write('\u001B[?25h')
+    showCursor()
     console.log('\n👋 Closing MIDI connection...')
   })
 } catch (error) {
   console.error('❌ Error:', error.message)
-  // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1)
 }

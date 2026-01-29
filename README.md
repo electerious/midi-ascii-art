@@ -19,12 +19,17 @@ npm install
 ```sh
 npm start
 npm start -- --columns 100 --rows 30
+npm start -- --color red
+npm start -- --color random
 ```
 
 #### Options
 
 - `-c, --columns <number>` - Number of columns (default: terminal width)
 - `-r, --rows <number>` - Number of rows (default: terminal height - 2)
+- `--color <color>` - Color for ASCII art (default: white)
+  - Named colors: `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white`, `gray`, `redBright`, `greenBright`, `yellowBright`, `blueBright`, `magentaBright`, `cyanBright`, `whiteBright`
+  - Use `random` for a random color on each run
 - `-h, --help` - Display help information
 - `-V, --version` - Display version number
 
@@ -53,6 +58,12 @@ npm start -- --columns 100 --rows 30
 
 # Run with smaller output
 npm start -- --columns 50 --rows 20
+
+# Run with colored output
+npm start -- --color cyan
+
+# Run with random color
+npm start -- --color random
 ```
 
 Example output when playing a MIDI key:
@@ -89,6 +100,7 @@ Each of the 88 piano keys maps to one of these 7 patterns using modulo arithmeti
 
 - 🎹 Real-time MIDI input detection
 - 🎨 7 unique ASCII art patterns (wave, diagonal, circle, grid, noise, chevron, spiral)
+- 🌈 Colorful output with 16 color options or random colors
 - 🎲 Seeded randomization - each key produces consistent but unique variations
 - 📐 Customizable terminal size
 - ✨ Clean fullscreen display
