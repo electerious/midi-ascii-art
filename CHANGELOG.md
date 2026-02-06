@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - Color support for ASCII art patterns with `--color` option (supports color names or "random")
+- Verbose mode with `--verbose` flag to show note info when keys are pressed (note number, velocity, pattern name)
 
 ## [1.0.0] - 2026-01-18
 
