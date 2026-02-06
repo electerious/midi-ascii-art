@@ -21,6 +21,7 @@ npm start
 npm start -- --columns 100 --rows 30
 npm start -- --color red
 npm start -- --color random
+npm start -- --verbose
 ```
 
 #### Options
@@ -30,6 +31,7 @@ npm start -- --color random
 - `--color <color>` - Color for ASCII art (default: white)
   - Named colors: `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white`, `gray`, `redBright`, `greenBright`, `yellowBright`, `blueBright`, `magentaBright`, `cyanBright`, `whiteBright`
   - Use `random` for a random color on each run
+- `-v, --verbose` - Show note info when keys are pressed (default: false)
 - `-h, --help` - Display help information
 - `-V, --version` - Display version number
 
@@ -64,6 +66,9 @@ npm start -- --color cyan
 
 # Run with random color
 npm start -- --color random
+
+# Run with verbose note info
+npm start -- --verbose
 ```
 
 Example output when playing a MIDI key:
