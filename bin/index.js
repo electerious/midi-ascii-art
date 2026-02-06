@@ -23,6 +23,7 @@ program
   .option('-c, --columns <number>', 'Number of columns', String(process.stdout.columns || 80))
   .option('-r, --rows <number>', 'Number of rows', String(process.stdout.rows - 2 || 20))
   .option('--color <color>', 'Color for ASCII art (color name or "random")', 'white')
+  .option('-v, --verbose', 'Show note info when keys are pressed', false)
   .parse()
 
 const options = program.opts()
@@ -30,6 +31,7 @@ const options = program.opts()
 const columns = Number.parseInt(options.columns, 10)
 const rows = Number.parseInt(options.rows, 10)
 const color = options.color
+const verbose = options.verbose
 
 if (Number.isNaN(columns) || columns <= 0) {
   console.error('❌ Invalid columns value')
@@ -75,8 +77,9 @@ const getSaltForNote = (note) => {
  *
  * @param {number} note - MIDI note number
  * @param {number} velocity - Note velocity
+ * @param {boolean} verbose - Whether to show note info
  */
-const displayAsciiForNote = (note, velocity) => {
+const displayAsciiForNote = (note, velocity, verbose) => {
   // Get salt for this note
   const salt = getSaltForNote(note)
 
@@ -88,8 +91,10 @@ const displayAsciiForNote = (note, velocity) => {
   console.clear()
 
   // Show note info
-  console.log(`🎹 Note: ${note} | Velocity: ${velocity} | Pattern: ${pattern.name}`)
-  console.log()
+  if (verbose) {
+    console.log(`🎹 Note: ${note} | Velocity: ${velocity} | Pattern: ${pattern.name}`)
+    console.log()
+  }
 
   // Generate and render pattern
   const grid = pattern.generator(columns, rows, salt)
@@ -122,7 +127,7 @@ try {
 
     // Only display when note is actually pressed (velocity > 0)
     if (velocity > 0) {
-      displayAsciiForNote(note, velocity)
+      displayAsciiForNote(note, velocity, verbose)
     }
   })
 
