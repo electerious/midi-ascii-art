@@ -21,17 +21,17 @@ program
   .name('midi-ascii-art')
   .description('Generate ASCII art patterns when MIDI keys are pressed')
   .option('-c, --columns <number>', 'Number of columns', String(process.stdout.columns || 80))
-  .option('-r, --rows <number>', 'Number of rows', String(process.stdout.rows - 2 || 20))
+  .option('-r, --rows <number>', 'Number of rows', String(process.stdout.rows || 20))
   .option('--color <color>', 'Color for ASCII art (color name or "random")', 'white')
   .option('-v, --verbose', 'Show note info when keys are pressed', false)
   .parse()
 
 const options = program.opts()
 
-const columns = Number.parseInt(options.columns, 10)
-const rows = Number.parseInt(options.rows, 10)
-const color = options.color
 const verbose = options.verbose
+const columns = Number.parseInt(options.columns, 10)
+const rows = verbose ? Number.parseInt(options.rows, 10) - 2 : Number.parseInt(options.rows, 10)
+const color = options.color
 
 if (Number.isNaN(columns) || columns <= 0) {
   console.error('❌ Invalid columns value')
