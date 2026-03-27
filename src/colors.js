@@ -49,7 +49,6 @@ export const applyColor = (text, color) => {
     return chalk[color](text)
   }
 
-  // Default to white if color not found
   return chalk.white(text)
 }
 

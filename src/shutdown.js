@@ -6,9 +6,7 @@
  */
 export const setupShutdownHandler = (device, onShutdown = null) => {
   process.on('SIGINT', () => {
-    if (onShutdown) {
-      onShutdown()
-    }
+    onShutdown?.()
     device.close()
     process.exit(0)
   })

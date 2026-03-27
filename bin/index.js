@@ -30,7 +30,7 @@ const options = program.opts()
 
 const verbose = options.verbose
 const columns = Number.parseInt(options.columns, 10)
-const rows = verbose ? Number.parseInt(options.rows, 10) - 2 : Number.parseInt(options.rows, 10)
+const rows = Number.parseInt(options.rows, 10) - (verbose ? 2 : 0)
 const color = options.color
 
 if (Number.isNaN(columns) || columns <= 0) {
@@ -43,7 +43,6 @@ if (Number.isNaN(rows) || rows <= 0) {
   process.exit(1)
 }
 
-// Map pattern names to generator functions
 const patterns = [
   { name: 'wave', generator: generateWave },
   { name: 'diagonal', generator: generateDiagonal },
@@ -54,7 +53,6 @@ const patterns = [
   { name: 'spiral', generator: generateSpiral },
 ]
 
-// Store salt assignments for each MIDI note
 const noteSalts = new Map()
 
 /**
@@ -65,9 +63,7 @@ const noteSalts = new Map()
  */
 const getSaltForNote = (note) => {
   if (!noteSalts.has(note)) {
-    // Generate a unique salt based on note number and timestamp
-    const salt = note * 1000 + Date.now()
-    noteSalts.set(note, salt)
+    noteSalts.set(note, note * 1000 + Date.now())
   }
   return noteSalts.get(note)
 }
@@ -80,23 +76,16 @@ const getSaltForNote = (note) => {
  * @param {boolean} verbose - Whether to show note info
  */
 const displayAsciiForNote = (note, velocity, verbose) => {
-  // Get salt for this note
   const salt = getSaltForNote(note)
+  const pattern = patterns[note % patterns.length]
 
-  // Select pattern based on note (modulo pattern count)
-  const patternIndex = note % patterns.length
-  const pattern = patterns[patternIndex]
-
-  // Clear screen
   console.clear()
 
-  // Show note info
   if (verbose) {
     console.log(`🎹 Note: ${note} | Velocity: ${velocity} | Pattern: ${pattern.name}`)
     console.log()
   }
 
-  // Generate and render pattern
   const grid = pattern.generator(columns, rows, salt)
   const output = renderPatternWithColor(grid, color)
 
@@ -106,7 +95,6 @@ const displayAsciiForNote = (note, velocity, verbose) => {
 console.log('🎹 MIDI ASCII Art Generator Started')
 
 try {
-  // List all available MIDI inputs
   const inputs = listDevices('input')
 
   console.log('Available MIDI inputs:')
@@ -115,23 +103,19 @@ try {
   }
   console.log()
 
-  // Connect to the first available MIDI input
   const inputName = inputs[0]
   console.log(`🔌 Connecting to: ${inputName}`)
 
   const input = connectToDevice(inputName, 'input')
 
-  // Listen for note on events
   input.on('noteon', (msg) => {
     const { note, velocity } = msg
 
-    // Only display when note is actually pressed (velocity > 0)
     if (velocity > 0) {
       displayAsciiForNote(note, velocity, verbose)
     }
   })
 
-  // Hide cursor
   hideCursor()
 
   console.log('✅ Listening for MIDI notes...')
@@ -139,9 +123,7 @@ try {
   console.log('Press any MIDI key to generate ASCII art')
   console.log('Press Ctrl+C to exit')
 
-  // Handle graceful shutdown
   setupShutdownHandler(input, () => {
-    // Show cursor again
     showCursor()
     console.log('\n👋 Closing MIDI connection...')
   })
