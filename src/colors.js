@@ -28,7 +28,7 @@ const colorNames = [
  *
  * @returns {string} Random color name
  */
-export const getRandomColor = () => {
+const getRandomColor = () => {
   return colorNames[Math.floor(Math.random() * colorNames.length)]
 }
 
@@ -39,7 +39,7 @@ export const getRandomColor = () => {
  * @param {string} color - Color name or 'random'
  * @returns {string} Colored text
  */
-export const applyColor = (text, color) => {
+const applyColor = (text, color) => {
   if (color === 'random') {
     const randomColor = getRandomColor()
     return chalk[randomColor](text)

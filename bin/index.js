@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander'
+import packageInfo from '../package.json' with { type: 'json' }
 import {
   generateChevron,
   generateCircle,
@@ -20,6 +21,7 @@ const program = new Command()
 program
   .name('midi-ascii-art')
   .description('Generate ASCII art patterns when MIDI keys are pressed')
+  .version(packageInfo.version)
   .option('-c, --columns <number>', 'Number of columns', String(process.stdout.columns || 80))
   .option('-r, --rows <number>', 'Number of rows', String(process.stdout.rows || 20))
   .option('--color <color>', 'Color for ASCII art (color name or "random")', 'white')
@@ -108,8 +110,8 @@ try {
 
   const input = connectToDevice(inputName, 'input')
 
-  input.on('noteon', (msg) => {
-    const { note, velocity } = msg
+  input.on('noteon', (message) => {
+    const { note, velocity } = message
 
     if (velocity > 0) {
       displayAsciiForNote(note, velocity, verbose)

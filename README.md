@@ -27,10 +27,10 @@ npm start -- --verbose
 #### Options
 
 - `-c, --columns <number>` - Number of columns (default: terminal width)
-- `-r, --rows <number>` - Number of rows (default: terminal height - 2)
+- `-r, --rows <number>` - Number of rows (default: terminal height)
 - `--color <color>` - Color for ASCII art (default: white)
   - Named colors: `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white`, `gray`, `redBright`, `greenBright`, `yellowBright`, `blueBright`, `magentaBright`, `cyanBright`, `whiteBright`
-  - Use `random` for a random color on each run
+  - Use `random` for a random color on each key press
 - `-v, --verbose` - Show note info when keys are pressed (default: false)
 - `-h, --help` - Display help information
 - `-V, --version` - Display version number
