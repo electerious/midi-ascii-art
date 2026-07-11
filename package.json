@@ -1,6 +1,6 @@
 {
   "name": "midi-ascii-art",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Generate beautiful ASCII art patterns in your terminal by playing MIDI keys",
   "keywords": [
     "midi",
