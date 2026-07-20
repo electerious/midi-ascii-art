@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [1.1.1] - 2026-07-11
 
-Internal dependency updates and maintenance.
+### Changed
+
+- Internal dependency updates and maintenance
 
 ## [1.1.0] - 2026-02-14
 
