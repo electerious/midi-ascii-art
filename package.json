@@ -12,11 +12,13 @@
   "homepage": "https://github.com/electerious/midi-ascii-art",
   "repository": {
     "type": "git",
-    "url": "https://github.com/electerious/midi-ascii-art.git"
+    "url": "git+https://github.com/electerious/midi-ascii-art.git"
   },
   "license": "MIT",
   "type": "module",
-  "bin": "./bin/index.js",
+  "bin": {
+    "midi-ascii-art": "bin/index.js"
+  },
   "files": [
     "bin",
     "src"
