@@ -2,12 +2,12 @@
  * Hide the terminal cursor.
  */
 export const hideCursor = () => {
-  process.stdout.write('\u001B[?25l')
+  process.stdout.write('\u{1B}[?25l')
 }
 
 /**
  * Show the terminal cursor.
  */
 export const showCursor = () => {
-  process.stdout.write('\u001B[?25h')
+  process.stdout.write('\u{1B}[?25h')
 }

@@ -31,8 +31,8 @@ program
 const options = program.opts()
 
 const verbose = options.verbose
-const columns = Number.parseInt(options.columns, 10)
-const rows = Number.parseInt(options.rows, 10) - (verbose ? 2 : 0)
+const columns = Number(options.columns)
+const rows = Number(options.rows) - (verbose ? 2 : 0)
 const color = options.color
 
 if (Number.isNaN(columns) || columns <= 0) {
