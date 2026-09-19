@@ -37,7 +37,7 @@ npm start -- --verbose
 
 #### Requirements
 
-- Node.js (v22 or higher)
+- Node.js (v24 or higher)
 - A MIDI keyboard or controller connected to your computer
 
 ### How it Works
